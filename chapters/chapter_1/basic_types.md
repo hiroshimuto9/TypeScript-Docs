@@ -101,3 +101,17 @@ console.log(text); // 私の名前はたかしです。
 `number`型よりも大きな整数を扱います。
 
 ---
+
+## `symbol`
+
+symbol 値は、Symbol コンストラクタを呼び出す事で定義できます。
+シンボルは普遍で一意になります。
+※ ECMAScript 2015 から導入されたため、コンパイラーオプションの lib に「lib.es2015.iterable」の設定などが必要
+
+```typescript
+const sym1: symbol = Symbol("シンボル");
+const sym2: symbol = Symbol("シンボル");
+console.log(sym1 === sym2); // false 一意であるため、引数に同じ文字列を入れても等価にはならない。
+```
+
+---

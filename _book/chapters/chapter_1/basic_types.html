@@ -225,6 +225,15 @@
 <h2 id="bigint"><code>bigint</code></h2>
 <p><code>number</code>&#x578B;&#x3088;&#x308A;&#x3082;&#x5927;&#x304D;&#x306A;&#x6574;&#x6570;&#x3092;&#x6271;&#x3044;&#x307E;&#x3059;&#x3002;</p>
 <hr>
+<h2 id="symbol"><code>symbol</code></h2>
+<p>symbol &#x5024;&#x306F;&#x3001;Symbol &#x30B3;&#x30F3;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30BF;&#x3092;&#x547C;&#x3073;&#x51FA;&#x3059;&#x4E8B;&#x3067;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
+&#x30B7;&#x30F3;&#x30DC;&#x30EB;&#x306F;&#x666E;&#x904D;&#x3067;&#x4E00;&#x610F;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;
+&#x203B; ECMAScript 2015 &#x304B;&#x3089;&#x5C0E;&#x5165;&#x3055;&#x308C;&#x305F;&#x305F;&#x3081;&#x3001;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x30FC;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E; lib &#x306B;&#x300C;lib.es2015.iterable&#x300D;&#x306E;&#x8A2D;&#x5B9A;&#x306A;&#x3069;&#x304C;&#x5FC5;&#x8981;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> sym1: symbol = Symbol(<span class="hljs-string">&quot;&#x30B7;&#x30F3;&#x30DC;&#x30EB;&quot;</span>);
+<span class="hljs-keyword">const</span> sym2: symbol = Symbol(<span class="hljs-string">&quot;&#x30B7;&#x30F3;&#x30DC;&#x30EB;&quot;</span>);
+<span class="hljs-built_in">console</span>.log(sym1 === sym2); <span class="hljs-comment">// false &#x4E00;&#x610F;&#x3067;&#x3042;&#x308B;&#x305F;&#x3081;&#x3001;&#x5F15;&#x6570;&#x306B;&#x540C;&#x3058;&#x6587;&#x5B57;&#x5217;&#x3092;&#x5165;&#x308C;&#x3066;&#x3082;&#x7B49;&#x4FA1;&#x306B;&#x306F;&#x306A;&#x3089;&#x306A;&#x3044;&#x3002;</span>
+</code></pre>
+<hr>
 
                                 
                                 </section>
@@ -264,7 +273,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TypeScript の基本","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter_1/basic_types.md","mtime":"2020-10-20T09:30:58.317Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-20T07:27:02.172Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TypeScript の基本","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter_1/basic_types.md","mtime":"2020-10-20T09:55:50.752Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-20T07:27:02.172Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
