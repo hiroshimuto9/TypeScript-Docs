@@ -115,3 +115,35 @@ console.log(sym1 === sym2); // false 一意であるため、引数に同じ文�
 ```
 
 ---
+
+## `undefined`
+
+未定義や値が代入されていない値
+
+### `undefined`な変数を参照するとコンパイルエラーとなります。(※strictNullChecks: true の場合)
+
+```typescript
+let value: string;
+console.log(value); // Variable 'value' is used before being assigned.
+```
+
+### 存在しないプロパティにアクセスした際に、`undefined`が返却されます。
+
+```typescript
+let numArray: number[] = [1, 2, 3];
+console.log(numArray[100]); // undefined
+```
+
+---
+
+## `null`
+
+明示的に無効な値を示します。
+`undefine`と`null`は別物のため`null`型の変数に`undefined`を入れることも、またその逆もエラーとなります。
+
+```typescript
+const sample: null = undefined; //Type 'undefined' is not assignable to type 'null'.
+const sample2: undefined = null; //Type 'null' is not assignable to type 'undefined'.
+```
+
+---
