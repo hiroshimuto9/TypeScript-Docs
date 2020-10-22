@@ -345,6 +345,28 @@
 };
 </code></pre>
 <hr>
+<h2 id="tuple&#x30BF;&#x30D7;&#x30EB;&#x578B;"><code>Tuple(&#x30BF;&#x30D7;&#x30EB;)&#x578B;</code></h2>
+<p><code>Tuple</code>&#x578B;&#x3092;&#x4F7F;&#x3046;&#x3053;&#x3068;&#x3067;&#x3001;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x8981;&#x7D20;&#x306E;&#x578B;&#x3068;&#x3001;&#x9806;&#x756A;&#x3084;&#x8981;&#x7D20;&#x6570;&#x306B;&#x5236;&#x7D04;&#x3092;&#x8A2D;&#x3051;&#x308B;&#x914D;&#x5217;&#x306E;&#x578B;&#x3092;&#x8868;&#x73FE;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
+&#x66F8;&#x304D;&#x65B9;&#x306F;&#x5358;&#x7D14;&#x3067;&#x3001;<code>[]</code>&#x306E;&#x4E2D;&#x306B;&#x578B;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3060;&#x3051;&#x3067;&#x3059;&#x3002;</p>
+<p>&#x30BF;&#x30D7;&#x30EB;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x7BC4;&#x56F2;&#x5916;&#x306E;&#x8981;&#x7D20;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3059;&#x308B;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;
+&#x307E;&#x305F;&#x30BF;&#x30D7;&#x30EB;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x578B;&#x3068;&#x7570;&#x306A;&#x308B;&#x578B;&#x306E;&#x5024;&#x3092;&#x4EE3;&#x5165;&#x3057;&#x305F;&#x308A;&#x3001;&#x9806;&#x756A;&#x304C;&#x7570;&#x306A;&#x308B;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> foo: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>] = [<span class="hljs-string">&quot;foo&quot;</span>, <span class="hljs-number">1</span>];
+foo[<span class="hljs-number">100</span>]; <span class="hljs-comment">// Tuple type &apos;[string, number]&apos; of length &apos;2&apos; has no element at index &apos;100&apos;.</span>
+
+<span class="hljs-keyword">let</span> bar: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];
+bar = [<span class="hljs-string">&quot;bar&quot;</span>, <span class="hljs-number">1</span>]; <span class="hljs-comment">// ok</span>
+bar = [<span class="hljs-number">1</span>, <span class="hljs-string">&quot;bar&quot;</span>];
+<span class="hljs-comment">// Type &apos;number&apos; is not assignable to type &apos;string&apos;.</span>
+<span class="hljs-comment">// Type &apos;string&apos; is not assignable to type &apos;number&apos;.</span>
+</code></pre>
+<p>&#x30BF;&#x30D7;&#x30EB;&#x3067;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x5909;&#x6570;&#x306F;&#x3001;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x578B;&#x304C;&#x6301;&#x3064;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
+&#x578B;&#x304C;&#x6301;&#x3064;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x4EE5;&#x5916;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3057;&#x3088;&#x3046;&#x3068;&#x3059;&#x308B;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> foo: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>] = [<span class="hljs-string">&quot;foo&quot;</span>, <span class="hljs-number">1</span>];
+<span class="hljs-built_in">console</span>.log(foo[<span class="hljs-number">0</span>].substring(<span class="hljs-number">1</span>)); <span class="hljs-comment">// string&#x578B;&#x304C;&#x6301;&#x3064;&#x30E1;&#x30BD;&#x30C3;&#x30C9;substring</span>
+<span class="hljs-built_in">console</span>.log(foo[<span class="hljs-number">1</span>].valueOf()); <span class="hljs-comment">// number&#x578B;&#x304C;&#x6301;&#x3064;&#x30E1;&#x30BD;&#x30C3;&#x30C9;valueOf()</span>
+<span class="hljs-built_in">console</span>.log(foo[<span class="hljs-number">1</span>].substring(<span class="hljs-number">1</span>)); <span class="hljs-comment">// Property &apos;substring&apos; does not exist on type &apos;number&apos;.</span>
+</code></pre>
+<hr>
 
                                 
                                 </section>
@@ -384,7 +406,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TypeScript の基本","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter_1/basic_types.md","mtime":"2020-10-22T08:33:24.658Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-22T01:59:18.352Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TypeScript の基本","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter_1/basic_types.md","mtime":"2020-10-22T10:02:56.256Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-22T01:59:18.352Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

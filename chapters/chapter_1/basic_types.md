@@ -277,3 +277,34 @@ const person: Person = {
 ```
 
 ---
+
+## `Tuple(タプル)型`
+
+`Tuple`型を使うことで、それぞれの要素の型と、順番や要素数に制約を設ける配列の型を表現できます。
+書き方は単純で、`[]`の中に型を定義するだけです。
+
+タプルで定義した範囲外の要素に対してアクセスするとエラーになります。
+またタプルで定義した型と異なる型の値を代入したり、順番が異なるとエラーになります。
+
+```typescript
+const foo: [string, number] = ["foo", 1];
+foo[100]; // Tuple type '[string, number]' of length '2' has no element at index '100'.
+
+let bar: [string, number];
+bar = ["bar", 1]; // ok
+bar = [1, "bar"];
+// Type 'number' is not assignable to type 'string'.
+// Type 'string' is not assignable to type 'number'.
+```
+
+タプルで定義された変数は、指定された型が持つメソッド使用できます。
+型が持つメソッド以外にアクセスしようとするとエラーになります。
+
+```typescript
+const foo: [string, number] = ["foo", 1];
+console.log(foo[0].substring(1)); // string型が持つメソッドsubstring
+console.log(foo[1].valueOf()); // number型が持つメソッドvalueOf()
+console.log(foo[1].substring(1)); // Property 'substring' does not exist on type 'number'.
+```
+
+---
