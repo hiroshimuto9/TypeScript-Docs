@@ -277,6 +277,74 @@
 <span class="hljs-keyword">const</span> list: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">number</span>&gt; = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
 </code></pre>
 <hr>
+<h2 id="object-&#x578B;">Object &#x578B;</h2>
+<p><code>Object</code>&#x578B;&#x306B;&#x306F;&#x3001;<code>Object</code>&#x578B;&#x3068;<code>object</code>&#x578B;&#x304C;&#x5B58;&#x5728;&#x3057;&#x307E;&#x3059;&#x3002;
+&#x305D;&#x3057;&#x3066;&#x3001;&#x305D;&#x308C;&#x3089;&#x306F;&#x540C;&#x4E00;&#x306E;&#x3082;&#x306E;&#x3067;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> obj: object = {};
+<span class="hljs-keyword">const</span> anotherObj: <span class="hljs-built_in">Object</span> = {};
+<span class="hljs-built_in">console</span>.log(obj === anotherObj); <span class="hljs-comment">// false</span>
+</code></pre>
+<p><code>Object</code>&#x578B;: &#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x578B;&#x306E;<code>boolean</code>,<code>number</code>,<code>string</code>,<code>symbol</code>&#x3092;&#x542B;&#x307F;&#x307E;&#x3059;&#x3002;</p>
+<p><code>object</code>&#x578B;: &#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x578B;&#x306E;<code>boolean</code>,<code>number</code>,<code>string</code>,<code>symbol</code>, <code>bigint</code>, <code>null</code>, <code>undefined</code>&#x3092;&#x542B;&#x307F;&#x307E;&#x305B;&#x3093;&#x3002;</p>
+<p>&#x8A73;&#x7D30;&#x306F;&#x3053;&#x3061;&#x3089;&#x306E;&#x8A18;&#x4E8B;&#x304C;&#x53C2;&#x8003;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<p><a href="https://qiita.com/suin/items/928642e48959e864a74e" target="_blank">TypeScript &#x306E; Object &#x578B;&#x3068; object &#x578B;&#x306F;&#x540C;&#x3058;&#x2026;&#x2026;&#x3068;&#x601D;&#x3046;&#x3058;&#x3083;&#x3093;?</a></p>
+<h3 id="&#x72EC;&#x81EA;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x578B;&#x3092;&#x5B9A;&#x7FA9;">&#x72EC;&#x81EA;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x578B;&#x3092;&#x5B9A;&#x7FA9;</h3>
+<p>TypeScript &#x3067;&#x306F;&#x3001;&#x72EC;&#x81EA;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x578B;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> obj: {
+  name: <span class="hljs-built_in">string</span>;
+  age: <span class="hljs-built_in">number</span>;
+} = {
+  name: <span class="hljs-string">&quot;Takashi&quot;</span>,
+  age: <span class="hljs-number">22</span>,
+};
+</code></pre>
+<p>&#x3057;&#x304B;&#x3057;&#x3001;&#x4E0A;&#x8A18;&#x306E;&#x5B9A;&#x7FA9;&#x65B9;&#x6CD5;&#x3067;&#x306F;&#x6BCE;&#x56DE;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x3067;&#x66F8;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x975E;&#x52B9;&#x7387;&#x3067;&#x3059;&#x3002;
+&#x305D;&#x3053;&#x3067; TypeScript &#x3067;&#x306F;&#x3001;<code>Interface</code>&#x3084;<code>Type aliases</code>&#x306B;&#x3088;&#x3063;&#x3066;&#x72EC;&#x81EA;&#x306E;&#x578B;&#x306B;&#x540D;&#x524D;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x53EF;&#x80FD;&#x3067;&#x3059;&#x3002;
+<code>Interface</code>&#x3084;<code>Type aliases</code>&#x306E;&#x8A73;&#x7D30;&#x306F;&#x5404;&#x9805;&#x76EE;&#x306E;&#x8AAC;&#x660E;&#x306B;&#x3066;&#x884C;&#x3044;&#x307E;&#x3059;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-comment">// Interface</span>
+<span class="hljs-keyword">interface</span> Person {
+  name: <span class="hljs-built_in">string</span>;
+  age: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-comment">// Person&#x578B;&#x3092;Interface&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;&#x578B;&#x6307;&#x5B9A;&#x304C;&#x53EF;&#x80FD;&#x3068;&#x306A;&#x308B;&#x3002;</span>
+<span class="hljs-keyword">const</span> person: Person = {
+  name: <span class="hljs-string">&quot;Takashi&quot;</span>,
+  age: <span class="hljs-number">22</span>,
+};
+<span class="hljs-built_in">console</span>.log(person); <span class="hljs-comment">// { &quot;name&quot;: &quot;Takashi&quot;, &quot;age&quot;: 22 }</span>
+
+<span class="hljs-comment">// Type aliases</span>
+<span class="hljs-keyword">type</span> Person = {
+  name: <span class="hljs-built_in">string</span>;
+  age: <span class="hljs-built_in">number</span>;
+};
+
+<span class="hljs-comment">// Person&#x578B;&#x3092;type&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;&#x578B;&#x6307;&#x5B9A;&#x304C;&#x53EF;&#x80FD;&#x3068;&#x306A;&#x308B;&#x3002;</span>
+<span class="hljs-keyword">const</span> person: Person = {
+  name: <span class="hljs-string">&quot;Takashi&quot;</span>,
+  age: <span class="hljs-number">22</span>,
+};
+<span class="hljs-built_in">console</span>.log(person); <span class="hljs-comment">// { &quot;name&quot;: &quot;Takashi&quot;, &quot;age&quot;: 22 }</span>
+</code></pre>
+<p>&#x578B;&#x306B;&#x5408;&#x308F;&#x306A;&#x3044;&#x5024;&#x3092;&#x4EE3;&#x5165;&#x3057;&#x3088;&#x3046;&#x3068;&#x3057;&#x305F;&#x308A;&#x3001;&#x578B;&#x3068;&#x306F;&#x7570;&#x306A;&#x308B;&#x5F62;&#x5F0F;&#x3067;&#x4EE3;&#x5165;&#x3092;&#x884C;&#x304A;&#x3046;&#x3068;&#x3059;&#x308B;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> Person {
+  name: <span class="hljs-built_in">string</span>;
+  age: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-comment">// number&#x578B;&#x306E;age&#x306B;string&#x578B;&#x3092;&#x4EE3;&#x5165;</span>
+<span class="hljs-keyword">const</span> person: Person = {
+  name: <span class="hljs-string">&quot;Takashi&quot;</span>,
+  age: <span class="hljs-string">&quot;22&quot;</span>, <span class="hljs-comment">// Type &apos;string&apos; is not assignable to type &apos;number&apos;.</span>
+};
+
+<span class="hljs-comment">// age&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x304C;&#x7121;&#x3044;</span>
+<span class="hljs-keyword">const</span> person: Person = {
+  name: <span class="hljs-string">&quot;Takashi&quot;</span>, <span class="hljs-comment">// Property &apos;age&apos; is missing in type &apos;{ name: string; }&apos; but required in type &apos;Person&apos;.</span>
+};
+</code></pre>
+<hr>
 
                                 
                                 </section>
@@ -316,7 +384,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TypeScript の基本","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter_1/basic_types.md","mtime":"2020-10-22T04:54:50.758Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-22T01:59:18.352Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TypeScript の基本","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter_1/basic_types.md","mtime":"2020-10-22T08:33:24.658Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-22T01:59:18.352Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

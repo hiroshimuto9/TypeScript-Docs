@@ -190,3 +190,90 @@ const list: Array<number> = [1, 2, 3];
 ```
 
 ---
+
+## Object 型
+
+`Object`型には、`Object`型と`object`型が存在します。
+そして、それらは同一のものではありません。
+
+```typescript
+const obj: object = {};
+const anotherObj: Object = {};
+console.log(obj === anotherObj); // false
+```
+
+`Object`型: プリミティブ型の`boolean`,`number`,`string`,`symbol`を含みます。
+
+`object`型: プリミティブ型の`boolean`,`number`,`string`,`symbol`, `bigint`, `null`, `undefined`を含みません。
+
+詳細はこちらの記事が参考になります。
+
+[TypeScript の Object 型と object 型は同じ……と思うじゃん?](https://qiita.com/suin/items/928642e48959e864a74e)
+
+### 独自のオブジェクト型を定義
+
+TypeScript では、独自のオブジェクト型を定義することができます。
+
+```typescript
+const obj: {
+  name: string;
+  age: number;
+} = {
+  name: "Takashi",
+  age: 22,
+};
+```
+
+しかし、上記の定義方法では毎回インラインで書く必要があり非効率です。
+そこで TypeScript では、`Interface`や`Type aliases`によって独自の型に名前を定義することが可能です。
+`Interface`や`Type aliases`の詳細は各項目の説明にて行います。
+
+```typescript
+// Interface
+interface Person {
+  name: string;
+  age: number;
+}
+
+// Person型をInterfaceで定義することで、型指定が可能となる。
+const person: Person = {
+  name: "Takashi",
+  age: 22,
+};
+console.log(person); // { "name": "Takashi", "age": 22 }
+
+// Type aliases
+type Person = {
+  name: string;
+  age: number;
+};
+
+// Person型をtypeで定義することで、型指定が可能となる。
+const person: Person = {
+  name: "Takashi",
+  age: 22,
+};
+console.log(person); // { "name": "Takashi", "age": 22 }
+```
+
+型に合わない値を代入しようとしたり、型とは異なる形式で代入を行おうとするとエラーになります。
+
+```typescript
+interface Person {
+  name: string;
+  age: number;
+}
+
+// number型のageにstring型を代入
+const person: Person = {
+  name: "Takashi",
+  age: "22", // Type 'string' is not assignable to type 'number'.
+};
+
+// ageプロパティが無い
+const person: Person = {
+  name: "Takashi", // Property 'age' is missing in type '{ name: string; }' but required in type 'Person'.
+};
+```
+
+---
