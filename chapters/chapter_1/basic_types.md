@@ -147,3 +147,35 @@ const sample2: undefined = null; //Type 'null' is not assignable to type 'undefi
 ```
 
 ---
+
+## リテラル型
+
+リテラル型では、特定の値のみ許容する型を作ることができます。
+
+```typescript
+// 文字列リテラル
+const stringFoo: "foo" = "foo";
+const stringBar: "bar" = "foo"; // Type '"foo"' is not assignable to type '"bar"'.
+```
+
+リテラル型単体ではあまり使い所はありませんが、ユニオン型(Union types)で結合して便利な型を作成する時に相性が良いです。
+
+### Literal Narrowing
+
+変数を`var`や`let`で定義した時と、`const`で定義した時では型推論が変わります。
+
+```typescript
+const Hellow = "Hellow"; // stringではなく、"Hellow"型として推論される
+let hellow = "hellow"; // "hellow"型ではなく、string型として推論される
+```
+
+これは、`const`と`var`や`let`の役割によるものです。`const`は JavaScript において、一度変数が定義されると他の値の再代入を許容しないため
+特定の文字列型として推論されます。一方で、`var`や`let`は再代入を可能とするため、特定の文字列型となると意図に反します。そのため`string`型(プリミティブ型)として推論
+されます。
+
+```typescript
+let sample = "Hello"; // string型として推論される
+const sample2: "Hellow" = sample; // "Hellow"型として推論されるため、Type 'string' is not assignable to type '"Hellow"'.とエラーになる。
+```
+
+---
