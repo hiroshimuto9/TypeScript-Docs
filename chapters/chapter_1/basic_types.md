@@ -308,3 +308,112 @@ console.log(foo[1].substring(1)); // Property 'substring' does not exist on type
 ```
 
 ---
+
+## `Enum`
+
+`Enum(列挙型)`は変数に値を付与することができる型になります。
+デフォルトでは、1 番最初に宣言されたメンバに`0`が割り当てられ以降自動インクリメントされます。
+
+```typescript
+enum Color {
+  Red,
+  Green,
+  Blue,
+}
+
+console.log(Color.Red); // 0
+console.log(Color.Green); // 1
+console.log(Color.Blue); // 2
+```
+
+任意の列挙型メンバに関連付けられた番号を、変更することはできます。
+
+```typescript
+enum Color {
+  Red = 5,
+  Green,
+  Blue,
+}
+
+console.log(Color.Red); // 5
+console.log(Color.Green); // 6
+console.log(Color.Blue); // 7
+```
+
+また全ての値に対して、独自の値を設定することも可能性です。
+
+```typescript
+enum Color {
+  Red = 5,
+  Green = 10,
+  Blue = 22,
+}
+
+console.log(Color.Red); // 5
+console.log(Color.Green); // 10
+console.log(Color.Blue); // 22
+```
+
+数値の代わりに文字列を初期値として代入することも可能性です。
+
+```typescript
+enum Color {
+  Red = "赤",
+  Green = "緑",
+  Blue = "青",
+}
+
+console.log(Color.Red); // "赤"
+console.log(Color.Green); // "緑"
+console.log(Color.Blue); // "青"
+```
+
+また`interface`のように型としても扱うことができます。
+他の型と同様に、存在しない値へのアクセスや型以外の値の代入はエラーとなります。
+
+```typescript
+const color: Color = Color.Red; // 赤
+const anotherColor: Color = Color.Yellow; // Property 'Yellow' does not exist on type 'typeof Color'.
+
+let color: Color = Color.Red;
+color = "黄"; // Type '"黄色"' is not assignable to type 'Color'.
+color = "赤"; // Type '"赤"' is not assignable to type 'Color'.
+```
+
+ここで、`"赤"`も代入できないのは、型安全が働いていることによるものです。
+文字列の`"赤"`と`Color.Red`は同一でなく、型一致しないと判断されます。
+
+### TypeScript で`Enum`を使うのは控えたほうがよい？
+
+TypeScript で`Enum`を使わないほうが良いとされる理由はいくつかありますが、わかりやすいのは
+① 型安全では無い場合が存在すること
+② Tree-shaking ができないこと
+の 2 点が上げられると思います。
+
+① 型安全では無い場合が存在すること
+
+数値型の enum は型安全ではありません。
+
+```typescript
+enum Color {
+  Red,
+  Green,
+  Blue,
+}
+
+const color: Color = 5; // enumで定義した範囲外の数値を代入できてしまう。
+console.log(color); // 5
+```
+
+② Tree-shaking ができないこと
+上記については以下の記事を読むとわかりやすいです。
+
+[TypeScript の enum を使わないほうがいい理由を、Tree-shaking の観点で紹介します](https://engineering.linecorp.com/ja/blog/typescript-enum-tree-shaking/)
+
+他にも以下の記事も enum を非推奨として説明しています。
+
+[さようなら、TypeScript enum](https://www.kabuku.co.jp/developers/good-bye-typescript-enum)
+
+`enum`を使わず`union型`を使うことがおすすめとされています。`union型`については別途記載します。
+
+---
