@@ -493,3 +493,25 @@ consol.log(sayHello());
 ```
 
 ---
+
+## `Type assertion`
+
+`as xxx`を用いることで任意の型にアップキャスト・ダウンキャストすることができます。
+ただし、全く異なる 2 つの値を変換することは不可能です。
+
+コンパイラによる型の解釈を実装者側が意図的に変えるため、型安全ではなくなります。
+全く異なる 2 つの値を変換することは不可能とは言いましたが、唯一`unknown`を途中に挟むとコンパイルが通ってしまいます。
+
+```typescript
+const valueNum = 123;
+const str = valueNum as string;
+// Conversion of type 'number' to type 'string' may be a mistake because neither type sufficiently overlaps with the other.
+// If this was intentional, convert the expression to 'unknown' first
+
+const str = (valueNum as unknown) as string; // OK
+console.log(str.length); // undefined
+```
+
+型安全が放棄されてしまうため、`any`同様、原則使用を控えたほうが良いでしょう。
+
+---
