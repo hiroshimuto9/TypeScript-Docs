@@ -480,3 +480,16 @@ const result: never = error("エラー");
 `Error`が throw された場合、関数の実行は中断され、関数を抜け出します。そのため`result`には何も値が代入されることが無いため`never`型と定義できます。
 
 ---
+
+## `void`
+
+`void`型は主に関数の返り値の型として利用されることが多いです。`void`型は何も返さないことを意味する型となります。
+
+```typescript
+function sayHello(): void {
+  console.log("Hellow");
+}
+consol.log(sayHello());
+```
+
+---
