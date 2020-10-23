@@ -417,3 +417,66 @@ console.log(color); // 5
 `enum`を使わず`union型`を使うことがおすすめとされています。`union型`については別途記載します。
 
 ---
+
+## `any`,`unknown`,`never`型
+
+`any`型：何でもありな型
+`unknown`型：`any`型より安全で、プロパティやメソッドへのアクセスができない型
+`never`型：何も代入できない型
+
+```typescript
+const any1: any = 1;
+const any2: any = "文字列";
+
+const unknown1: unknown = 1;
+const unknown2: unknown = "文字列";
+
+console.log(any1.toString());
+console.log(any2.length);
+console.log(unknown1.toString()); // Object is of type 'unknown'.
+console.log(unknown2.length); // Object is of type 'unknown'.
+```
+
+`any`型はその役割の通り、どのような型でも許容してしまうため TypeScript 本来の機能が失われてしまします。
+そのため、JavaScript プロジェクトからの段階的以降で仕方なく使う場合などを覗いて原則使わない方が良いです。
+
+`never`型は、何も代入できない型です。以下のような場合に用いることで、実装漏れを防ぐことができます。
+
+```typescript
+const getCountryName = (country: "Japan" | "America" | "China") => {
+  switch (country) {
+    case "Japan":
+      return "Japan";
+    case "America":
+      return "America";
+    // case "China":
+    //   return "China";
+    default:
+      const countryName: never = country; // Type 'string' is not assignable to type 'never'.
+      return countryName;
+  }
+};
+
+console.log(getCountryName("Japan"));
+```
+
+万が一`case "China":`を入れ忘れていた場合に、`countryName`に`"China"`が代入されてしまいます。
+その時に`never`型を用いているため、エラーを吐いてくれます。
+
+これは、この関数の中で実際には`default`が実行されることはないことを型によって示しています。
+
+また上記以外でもエラーを throw する関数でも`never`型が使用されることがあります。
+
+```typescript
+function error(message: string): never {
+  throw new Error(message);
+}
+const result: never = error("エラー");
+```
+
+関数の返り値が何も無いことを表す際、`void`型がよく使われますが、`never`型とは別物です。
+
+この関数での`never`型は、関数が正常に終了し値が返ってくることが無い事を示します。
+`Error`が throw された場合、関数の実行は中断され、関数を抜け出します。そのため`result`には何も値が代入されることが無いため`never`型と定義できます。
+
+---
