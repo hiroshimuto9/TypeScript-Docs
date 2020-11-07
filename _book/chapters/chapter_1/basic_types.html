@@ -532,6 +532,40 @@ consol.log(sayHello());
   <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">// Type &apos;boolean&apos; is not assignable to type &apos;string | number&apos;.</span>
 }
 </code></pre>
+<p>&#x30E6;&#x30CB;&#x30AA;&#x30F3;&#x578B;&#x3092;&#x6301;&#x3064;&#x5024;&#x304C;&#x3042;&#x308B;&#x5834;&#x5408;&#x3001;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;&#x306E;&#x306F;&#x5168;&#x3066;&#x306E;&#x578B;&#x3067;&#x5171;&#x901A;&#x306E;&#x30E1;&#x30F3;&#x30D0;&#x306E;&#x307F;&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> Bird {
+  fly(): <span class="hljs-built_in">void</span>;
+  layEggs(): <span class="hljs-built_in">void</span>;
+}
+
+<span class="hljs-keyword">interface</span> Fish {
+  swim(): <span class="hljs-built_in">void</span>;
+  layEggs(): <span class="hljs-built_in">void</span>;
+}
+
+<span class="hljs-keyword">declare</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSmallPet</span>(<span class="hljs-params"></span>): <span class="hljs-title">Fish</span> | <span class="hljs-title">Bird</span></span>;
+
+<span class="hljs-keyword">let</span> pet = getSmallPet();
+<span class="hljs-comment">// layEggs&#x306F;Bird&#x578B;&#x306B;&#x3082;Fish&#x578B;&#x306B;&#x3082;&#x5B58;&#x5728;&#x3059;&#x308B;&#x305F;&#x3081;&#x3001;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x53EF;&#x80FD;</span>
+pet.layEggs();
+<span class="hljs-comment">// swim&#x306F;Bird&#x578B;&#x306B;&#x306F;&#x5B58;&#x5728;&#x305B;&#x305A;&#x3001;Fish&#x578B;&#x306B;&#x306F;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3044;&#x308B;&#x72B6;&#x614B;&#x3067;&#x3042;&#x308B;&#x305F;&#x3081;&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306A;&#x308B;</span>
+<span class="hljs-comment">// Property &apos;swim&apos; does not exist on type &apos;Bird | Fish&apos;. Property &apos;swim&apos; does not exist on type &apos;Bird&apos;.</span>
+pet.swim();
+</code></pre>
+<p>&#x3057;&#x304B;&#x3057;&#x3001;&#x3053;&#x306E;&#x307E;&#x307E;&#x3067;&#x306F;&#x30E6;&#x30CB;&#x30AA;&#x30F3;&#x578B;&#x3092;&#x4F7F;&#x3063;&#x305F;&#x969B;&#x306B;&#x5168;&#x3066;&#x306B;&#x5171;&#x901A;&#x3057;&#x3066;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x306A;&#x3044;&#x4E0D;&#x4FBF;&#x306A;&#x3082;&#x306E;&#x3068;&#x306A;&#x3063;&#x3066;&#x3057;&#x307E;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x305D;&#x3053;&#x3067; TypeScript &#x3067;&#x306F;&#x3001;&#x30E6;&#x30CB;&#x30AA;&#x30F3;&#x578B;&#x304B;&#x3089;&#x578B;&#x3092;&#x7279;&#x5B9A;&#x3059;&#x308B;&#x6A5F;&#x80FD;&#x3068;&#x3057;&#x3066;&#x3001;<code>typeof</code>&#x3084;<code>instanceof</code>&#x304C;&#x5B58;&#x5728;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x4F7F;&#x3044;&#x5206;&#x3051;&#x3068;&#x3057;&#x3066;&#x306F;&#x3001;<code>typeof</code>&#x306F;&#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x578B;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;<code>instanceof</code>&#x306F;&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x4F7F;&#x3048;&#x307E;&#x3059;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> primitive: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> = someFunc(); <span class="hljs-comment">// someFunc&#x306F;string&#x578B;&#x3082;&#x3057;&#x304F;&#x306F;number&#x578B;&#x306E;&#x5024;&#x3092;&#x8FD4;&#x3059;&#x95A2;&#x6570;&#x3068;&#x3059;&#x308B;</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> primitive === <span class="hljs-string">&apos;number&apos;</span>) {
+  prim. <span class="hljs-comment">// number&#x578B;&#x306E;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3001;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x4F7F;&#x7528;&#x53EF;&#x80FD;&#x3068;&#x306A;&#x308B;&#x3002;</span>
+  <span class="hljs-keyword">return</span>;
+}
+
+<span class="hljs-keyword">const</span> animal: Fish | Bird = getSmallPet(); <span class="hljs-comment">//&#x3000;getSmallPet&#x306F;Fish&#x578B;&#x3082;&#x3057;&#x304F;&#x306F;Bird&#x578B;&#x306E;&#x5024;&#x3092;&#x8FD4;&#x3059;&#x95A2;&#x6570;&#x3068;&#x3059;&#x308B;</span>
+<span class="hljs-keyword">if</span> (animal <span class="hljs-keyword">instanceof</span> Bird) {
+  animal. <span class="hljs-comment">// Bird&#x578B;&#x304C;&#x306E;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3001;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x4F7F;&#x7528;&#x53EF;&#x80FD;&#x3068;&#x306A;&#x308B;</span>
+}
+</code></pre>
 <hr>
 
                                 
@@ -572,7 +606,7 @@ consol.log(sayHello());
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TypeScript の基本","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter_1/basic_types.md","mtime":"2020-11-07T07:42:58.829Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-07T06:28:10.135Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TypeScript の基本","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter_1/basic_types.md","mtime":"2020-11-07T12:15:20.110Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-07T06:28:10.135Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

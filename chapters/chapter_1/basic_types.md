@@ -539,4 +539,46 @@ function union(): string | number {
 }
 ```
 
+ユニオン型を持つ値がある場合、アクセスできるのは全ての型で共通のメンバのみとなります。
+
+```typescript
+interface Bird {
+  fly(): void;
+  layEggs(): void;
+}
+
+interface Fish {
+  swim(): void;
+  layEggs(): void;
+}
+
+declare function getSmallPet(): Fish | Bird;
+
+let pet = getSmallPet();
+// layEggsはBird型にもFish型にも存在するため、アクセス可能
+pet.layEggs();
+// swimはBird型には存在せず、Fish型には存在している状態であるためエラーとなる
+// Property 'swim' does not exist on type 'Bird | Fish'. Property 'swim' does not exist on type 'Bird'.
+pet.swim();
+```
+
+しかし、このままではユニオン型を使った際に全てに共通して存在しないにアクセスできない不便なものとなってしまします。
+
+そこで TypeScript では、ユニオン型から型を特定する機能として、`typeof`や`instanceof`が存在します。
+
+使い分けとしては、`typeof`はプリミティブ型に対して、`instanceof`はクラスに対して使えます。
+
+```typescript
+const primitive: string | number = someFunc(); // someFuncはstring型もしくはnumber型の値を返す関数とする
+if (typeof primitive === 'number') {
+  prim. // number型のプロパティ、メソッドが使用可能となる。
+  return;
+}
+
+const animal: Fish | Bird = getSmallPet(); //　getSmallPetはFish型もしくはBird型の値を返す関数とする
+if (animal instanceof Bird) {
+  animal. // Bird型がのプロパティ、メソッドが使用可能となる
+}
+```
+
 ---
