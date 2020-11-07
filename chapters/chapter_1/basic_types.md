@@ -577,7 +577,7 @@ if (typeof primitive === 'number') {
 
 const animal: Fish | Bird = getSmallPet(); //　getSmallPetはFish型もしくはBird型の値を返す関数とする
 if (animal instanceof Bird) {
-  animal. // Bird型がのプロパティ、メソッドが使用可能となる
+  animal. // Bird型が持つプロパティ、メソッドが使用可能となる
 }
 ```
 
