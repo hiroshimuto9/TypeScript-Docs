@@ -582,3 +582,71 @@ if (animal instanceof Bird) {
 ```
 
 ---
+
+## `Generics`
+
+データの型をパラメータとして定義するジェネリクスが TypeScript にも備わっています。
+
+共通のコードがあったときに、時には「型安全を守ること」と「コードを共通化すること」が相反することがあります。
+
+その際にジェネリクスはその問題を解決します。
+
+例えば、引数を元に「ランダムに文字列を返す関数」「ランダムに数値を返す関数」を実装するとします。
+
+型安全を守る場合
+
+```typescript
+function randomValue(value1: string, value2: string): string {
+  // ランダムな文字列を返す処理
+  return randomString;
+}
+
+function randomValue(value1: number, value2: number): number {
+  // ランダムな数値を返す処理
+  return randomNum;
+}
+```
+
+一方で、
+
+コードを共通化しようとする場合
+
+```typescript
+function randomValue(value1: any, value2: any): any {
+  // ランダムな値を返す処理
+  return randomValue;
+}
+```
+
+型安全を守ろうとする場合は、全く同じ処理だが引数や返り値の型が異なる関数が複数生成されます。
+
+一方でコードを共通化しようとすると、`any`を使うしかなく型安全が放棄されてしまいます。
+
+ジェネリクスでは、以下のように実装することが可能となります。
+
+```typescript
+function randomValue<T>(value1: T, value2: T): T {
+  // ランダムな値を返す処理
+  return randomValue;
+}
+
+const result = randomValue<string>("文字列A", "文字列B");
+const result = randomValue<number>(1, 2);
+```
+
+`T`は型変数です。呼び出し側で型変数を定義することによって、動的に関数の引数の型を決めることができます。
+
+型変数の定義を省略することも可能です。
+
+その場合、型変数`T`は引数から型推論されます。
+
+```typescript
+function randomValue<T>(value1: T, value2: T): T {
+  // ランダムな値を返す処理
+  return randomValue;
+}
+
+const result = randomValue("文字列A", "文字列B");
+```
+
+---

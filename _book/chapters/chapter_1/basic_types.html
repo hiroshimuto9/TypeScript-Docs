@@ -563,8 +563,53 @@ pet.swim();
 
 <span class="hljs-keyword">const</span> animal: Fish | Bird = getSmallPet(); <span class="hljs-comment">//&#x3000;getSmallPet&#x306F;Fish&#x578B;&#x3082;&#x3057;&#x304F;&#x306F;Bird&#x578B;&#x306E;&#x5024;&#x3092;&#x8FD4;&#x3059;&#x95A2;&#x6570;&#x3068;&#x3059;&#x308B;</span>
 <span class="hljs-keyword">if</span> (animal <span class="hljs-keyword">instanceof</span> Bird) {
-  animal. <span class="hljs-comment">// Bird&#x578B;&#x304C;&#x306E;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3001;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x4F7F;&#x7528;&#x53EF;&#x80FD;&#x3068;&#x306A;&#x308B;</span>
+  animal. <span class="hljs-comment">// Bird&#x578B;&#x304C;&#x6301;&#x3064;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3001;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x4F7F;&#x7528;&#x53EF;&#x80FD;&#x3068;&#x306A;&#x308B;</span>
 }
+</code></pre>
+<hr>
+<h2 id="generics"><code>Generics</code></h2>
+<p>&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x578B;&#x3092;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x30B8;&#x30A7;&#x30CD;&#x30EA;&#x30AF;&#x30B9;&#x304C; TypeScript &#x306B;&#x3082;&#x5099;&#x308F;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x5171;&#x901A;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x3042;&#x3063;&#x305F;&#x3068;&#x304D;&#x306B;&#x3001;&#x6642;&#x306B;&#x306F;&#x300C;&#x578B;&#x5B89;&#x5168;&#x3092;&#x5B88;&#x308B;&#x3053;&#x3068;&#x300D;&#x3068;&#x300C;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x5171;&#x901A;&#x5316;&#x3059;&#x308B;&#x3053;&#x3068;&#x300D;&#x304C;&#x76F8;&#x53CD;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x305D;&#x306E;&#x969B;&#x306B;&#x30B8;&#x30A7;&#x30CD;&#x30EA;&#x30AF;&#x30B9;&#x306F;&#x305D;&#x306E;&#x554F;&#x984C;&#x3092;&#x89E3;&#x6C7A;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x4F8B;&#x3048;&#x3070;&#x3001;&#x5F15;&#x6570;&#x3092;&#x5143;&#x306B;&#x300C;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306B;&#x6587;&#x5B57;&#x5217;&#x3092;&#x8FD4;&#x3059;&#x95A2;&#x6570;&#x300D;&#x300C;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306B;&#x6570;&#x5024;&#x3092;&#x8FD4;&#x3059;&#x95A2;&#x6570;&#x300D;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3068;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x578B;&#x5B89;&#x5168;&#x3092;&#x5B88;&#x308B;&#x5834;&#x5408;</p>
+<pre><code class="lang-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">randomValue</span>(<span class="hljs-params">value1: <span class="hljs-built_in">string</span>, value2: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">string</span> </span>{
+  <span class="hljs-comment">// &#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306A;&#x6587;&#x5B57;&#x5217;&#x3092;&#x8FD4;&#x3059;&#x51E6;&#x7406;</span>
+  <span class="hljs-keyword">return</span> randomString;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">randomValue</span>(<span class="hljs-params">value1: <span class="hljs-built_in">number</span>, value2: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">number</span> </span>{
+  <span class="hljs-comment">// &#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306A;&#x6570;&#x5024;&#x3092;&#x8FD4;&#x3059;&#x51E6;&#x7406;</span>
+  <span class="hljs-keyword">return</span> randomNum;
+}
+</code></pre>
+<p>&#x4E00;&#x65B9;&#x3067;&#x3001;</p>
+<p>&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x5171;&#x901A;&#x5316;&#x3057;&#x3088;&#x3046;&#x3068;&#x3059;&#x308B;&#x5834;&#x5408;</p>
+<pre><code class="lang-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">randomValue</span>(<span class="hljs-params">value1: <span class="hljs-built_in">any</span>, value2: <span class="hljs-built_in">any</span></span>): <span class="hljs-title">any</span> </span>{
+  <span class="hljs-comment">// &#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306A;&#x5024;&#x3092;&#x8FD4;&#x3059;&#x51E6;&#x7406;</span>
+  <span class="hljs-keyword">return</span> randomValue;
+}
+</code></pre>
+<p>&#x578B;&#x5B89;&#x5168;&#x3092;&#x5B88;&#x308D;&#x3046;&#x3068;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#x3001;&#x5168;&#x304F;&#x540C;&#x3058;&#x51E6;&#x7406;&#x3060;&#x304C;&#x5F15;&#x6570;&#x3084;&#x8FD4;&#x308A;&#x5024;&#x306E;&#x578B;&#x304C;&#x7570;&#x306A;&#x308B;&#x95A2;&#x6570;&#x304C;&#x8907;&#x6570;&#x751F;&#x6210;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x4E00;&#x65B9;&#x3067;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x5171;&#x901A;&#x5316;&#x3057;&#x3088;&#x3046;&#x3068;&#x3059;&#x308B;&#x3068;&#x3001;<code>any</code>&#x3092;&#x4F7F;&#x3046;&#x3057;&#x304B;&#x306A;&#x304F;&#x578B;&#x5B89;&#x5168;&#x304C;&#x653E;&#x68C4;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3044;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x30B8;&#x30A7;&#x30CD;&#x30EA;&#x30AF;&#x30B9;&#x3067;&#x306F;&#x3001;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x53EF;&#x80FD;&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">randomValue</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-params">value1: T, value2: T</span>): <span class="hljs-title">T</span> </span>{
+  <span class="hljs-comment">// &#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306A;&#x5024;&#x3092;&#x8FD4;&#x3059;&#x51E6;&#x7406;</span>
+  <span class="hljs-keyword">return</span> randomValue;
+}
+
+<span class="hljs-keyword">const</span> result = randomValue&lt;<span class="hljs-built_in">string</span>&gt;(<span class="hljs-string">&quot;&#x6587;&#x5B57;&#x5217;A&quot;</span>, <span class="hljs-string">&quot;&#x6587;&#x5B57;&#x5217;B&quot;</span>);
+<span class="hljs-keyword">const</span> result = randomValue&lt;<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+</code></pre>
+<p><code>T</code>&#x306F;&#x578B;&#x5909;&#x6570;&#x3067;&#x3059;&#x3002;&#x547C;&#x3073;&#x51FA;&#x3057;&#x5074;&#x3067;&#x578B;&#x5909;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#x3001;&#x52D5;&#x7684;&#x306B;&#x95A2;&#x6570;&#x306E;&#x5F15;&#x6570;&#x306E;&#x578B;&#x3092;&#x6C7A;&#x3081;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x578B;&#x5909;&#x6570;&#x306E;&#x5B9A;&#x7FA9;&#x3092;&#x7701;&#x7565;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;&#x3067;&#x3059;&#x3002;</p>
+<p>&#x305D;&#x306E;&#x5834;&#x5408;&#x3001;&#x578B;&#x5909;&#x6570;<code>T</code>&#x306F;&#x5F15;&#x6570;&#x304B;&#x3089;&#x578B;&#x63A8;&#x8AD6;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">randomValue</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-params">value1: T, value2: T</span>): <span class="hljs-title">T</span> </span>{
+  <span class="hljs-comment">// &#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306A;&#x5024;&#x3092;&#x8FD4;&#x3059;&#x51E6;&#x7406;</span>
+  <span class="hljs-keyword">return</span> randomValue;
+}
+
+<span class="hljs-keyword">const</span> result = randomValue(<span class="hljs-string">&quot;&#x6587;&#x5B57;&#x5217;A&quot;</span>, <span class="hljs-string">&quot;&#x6587;&#x5B57;&#x5217;B&quot;</span>);
 </code></pre>
 <hr>
 
@@ -606,7 +651,7 @@ pet.swim();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TypeScript の基本","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter_1/basic_types.md","mtime":"2020-11-07T12:15:20.110Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-07T06:28:10.135Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TypeScript の基本","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter_1/basic_types.md","mtime":"2020-11-07T13:49:25.997Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-07T13:49:44.021Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
