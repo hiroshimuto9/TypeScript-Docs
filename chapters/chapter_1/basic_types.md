@@ -515,3 +515,28 @@ console.log(str.length); // undefined
 型安全が放棄されてしまうため、`any`同様、原則使用を控えたほうが良いでしょう。
 
 ---
+
+## `Union Types(ユニオン型) `
+
+ユニオン型は、複数の型のいずれかに当てはまる型を表現したい時に使われる型です。
+
+`|`でつなぎ合わせることで表現します。
+例えば、ある関数の返り値が`string`型もしくは`number`型のときに、`string | number`とすることで型が設定できます。
+
+```typescript
+function union(): string | number {
+  // ....
+  return "文字列";
+}
+```
+
+もちろん、指定された型以外を当てはめようとするとエラーとなります。
+
+```typescript
+function union(): string | number {
+  // ....
+  return true; // Type 'boolean' is not assignable to type 'string | number'.
+}
+```
+
+---
