@@ -703,3 +703,46 @@ getProperty(x, "m"); // Argument of type '"m"' is not assignable to parameter of
 このように制約をかけることで、誤って存在しない値の取得をしないようにしています。
 
 ---
+
+## `Mapped Types`
+
+`Mapped Types`は、`{[P in K]: T}`という構文を持ち、元の型に基づいて新しい型を作るものです。
+
+例えば、`Person`のインターフェースがあり、
+
+① 全てのプロパティをオプションにした型
+
+② 全てのプロパティを読み取り専用にした型
+
+を定義したいとします。
+
+```typescript
+interface Person {
+  nema: string;
+  age: number;
+}
+
+// ①全てのプロパティをオプションにした型
+type PartialPerson = { [P in keyof Person]?: Person[P] };
+/**
+type PartialPerson = {
+  nema?: string | undefined;
+  age?: number | undefined;
+}
+*/
+
+// ②全てのプロパティを読み取り専用にした型
+type ReadonlyPerson = { readonly [P in keyof Person]: Person[P] };
+/**
+type ReadonlyPerson = {
+  readonly nema: string;
+  readonly age: number;
+}
+*/
+```
+
+このように、元の型`Person`から新たな型を生成することが可能です。
+
+上記で挙げた例はよく使われるため、 TypeScript の標準ライブラリに定義されており、`Partial<T>`や`Readonly<T>`として使用可能です。
+
+---
