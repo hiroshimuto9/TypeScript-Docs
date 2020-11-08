@@ -611,6 +611,30 @@ pet.swim();
 
 <span class="hljs-keyword">const</span> result = randomValue(<span class="hljs-string">&quot;&#x6587;&#x5B57;&#x5217;A&quot;</span>, <span class="hljs-string">&quot;&#x6587;&#x5B57;&#x5217;B&quot;</span>);
 </code></pre>
+<h3 id="generics-&#x306E;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;">Generics &#x306E;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;</h3>
+<p>Generics &#x306E;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;&#x3067;&#x3059;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> KeyValue&lt;T, U&gt; {
+  key: T;
+  value: U;
+}
+
+<span class="hljs-keyword">const</span> obj: KeyValue&lt;<span class="hljs-built_in">number</span>, <span class="hljs-built_in">string</span>&gt; = { key: <span class="hljs-number">1</span>, value: <span class="hljs-string">&quot;&#x30B9;&#x30BA;&#x30AD;&quot;</span> };
+<span class="hljs-built_in">console</span>.log(obj); <span class="hljs-comment">// { &quot;key&quot;: 1, &quot;value&quot;: &quot;&#x30B9;&#x30BA;&#x30AD;&quot;}</span>
+</code></pre>
+<h3 id="generics-&#x306E;&#x30AF;&#x30E9;&#x30B9;">Generics &#x306E;&#x30AF;&#x30E9;&#x30B9;</h3>
+<p>&#x95A2;&#x6570;&#x306B; Generics &#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x3088;&#x3046;&#x306B;&#x3001;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x3082;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">class</span> Person&lt;T, U&gt; {
+  <span class="hljs-keyword">private</span> name;
+  <span class="hljs-keyword">private</span> age;
+  <span class="hljs-keyword">constructor</span>(name: T, age: U) {
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.age = age;
+  }
+}
+
+<span class="hljs-keyword">const</span> obj = <span class="hljs-keyword">new</span> Person&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>&gt;(<span class="hljs-string">&quot;&#x30B9;&#x30BA;&#x30AD;&quot;</span>, <span class="hljs-number">22</span>);
+<span class="hljs-built_in">console</span>.log(obj); <span class="hljs-comment">// Person: {&quot;name&quot;: &quot;&#x30B9;&#x30BA;&#x30AD;&quot;, &quot;age&quot;: 22}</span>
+</code></pre>
 <hr>
 
                                 
@@ -651,7 +675,7 @@ pet.swim();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TypeScript の基本","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter_1/basic_types.md","mtime":"2020-11-07T13:49:25.997Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-07T13:49:44.021Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TypeScript の基本","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter_1/basic_types.md","mtime":"2020-11-08T06:17:01.290Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-07T13:49:44.021Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

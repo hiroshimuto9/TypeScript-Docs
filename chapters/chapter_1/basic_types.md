@@ -649,4 +649,36 @@ function randomValue<T>(value1: T, value2: T): T {
 const result = randomValue("文字列A", "文字列B");
 ```
 
+### Generics のインターフェース
+
+Generics のインターフェースを定義することも可能です。
+
+```typescript
+interface KeyValue<T, U> {
+  key: T;
+  value: U;
+}
+
+const obj: KeyValue<number, string> = { key: 1, value: "スズキ" };
+console.log(obj); // { "key": 1, "value": "スズキ"}
+```
+
+### Generics のクラス
+
+関数に Generics を使用したように、クラスでも使用することができます。
+
+```typescript
+class Person<T, U> {
+  private name;
+  private age;
+  constructor(name: T, age: U) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+const obj = new Person<string, number>("スズキ", 22);
+console.log(obj); // Person: {"name": "スズキ", "age": 22}
+```
+
 ---
