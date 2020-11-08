@@ -681,4 +681,25 @@ const obj = new Person<string, number>("スズキ", 22);
 console.log(obj); // Person: {"name": "スズキ", "age": 22}
 ```
 
+### Generics での制約
+
+Generics を使用する際に、他の型パラメータによって制約をかけた型パラメータを宣言することが可能です。
+
+```typescript
+function getProperty<T, K extends keyof T>(obj: T, key: K) {
+  return obj[key];
+}
+
+let x = { a: 1, b: 2, c: 3, d: 4 };
+
+getProperty(x, "a");
+getProperty(x, "m"); // Argument of type '"m"' is not assignable to parameter of type '"a" | "b" | "c" | "d"'.
+```
+
+上記は、あるオブジェクトから、特定の値を所得する関数です。
+
+`getProperty<T, K extends keyof T>` とジェネリクスを宣言することで、`K`には`T`に存在する key のみしか代入されない制約をかけています。
+
+このように制約をかけることで、誤って存在しない値の取得をしないようにしています。
+
 ---
